@@ -52,14 +52,14 @@ namespace FlashCardGenerator
                     .PrimaryLayer()
                     .AlignCenter()
                     .AlignMiddle()
-                    .Padding(.125f, Unit.Inch)
+                    .Padding(.25f, Unit.Inch)
                     .Column(column =>
                     {
                         column.Item()
                                 .ScaleToFit()
                                 .Text(Text)
                                 .FontFamily(FontFamily)
-                                .FontSize(32)
+                                .FontSize(28)
                                 .SemiBold();
                     });
             });
