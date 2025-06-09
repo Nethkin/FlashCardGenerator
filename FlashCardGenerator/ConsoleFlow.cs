@@ -47,6 +47,27 @@ namespace FlashCardGenerator
             return Console.ReadLine();
         }
 
+        internal static string MarginOverridesPrompt(string currentMargins)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"\nThe default page margins are .5\" top, .5\" bottom, .75\" left, and .75\" right.\n");
+            sb.Append($"The current settings are: {currentMargins}\n\n");
+            sb.Append($"Type \"yes\" to continue, \"defaults\" to return to the original settings,\n");
+            sb.Append($"\"tested\" for my personal settings (experimental: trial and error on my own printer),\n");
+            sb.Append($"or type a new set of top, bottom, left, and right adjustments separated by commas (e.g., 0.1, 0.2, 0.3, 0.4):");
+            Console.WriteLine(sb.ToString());
+            return Console.ReadLine();
+        }
+
+        internal static string RoundedEdgesPrompt()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"\nDo you want the cards to have rounded edges with thin borders (type \"round\"),\n");
+            sb.Append($"or do you want them to have square edges with thick borders that are easier to cut (type \"square\")?,");
+            Console.WriteLine(sb.ToString());
+            return Console.ReadLine();
+        }
+
         #endregion
 
 

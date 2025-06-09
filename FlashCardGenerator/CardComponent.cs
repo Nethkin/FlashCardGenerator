@@ -11,16 +11,17 @@ namespace FlashCardGenerator
 
         private string FontFamily { get; }
         private string Text { get; }
-
+        private bool Rounded { get; }
         #endregion
 
         #region Constructors
 
-        public CardComponent(string text, string fontFamily)
+        public CardComponent(string text, string fontFamily, bool rounded = false)
         {
             FontFamily = fontFamily;
             Text = text;
-        }
+            Rounded = rounded;
+         }
 
         #endregion
 
@@ -37,14 +38,26 @@ namespace FlashCardGenerator
 
                     void DrawRoundedRectangle(string color, bool isStroke)
                     {
+                        float strokeWidth;
+                        float cornerRadius;
+                        if (Rounded)
+                        {
+                            strokeWidth = 2;
+                            cornerRadius = 20;
+                        }
+                        else
+                        {
+                            strokeWidth = 10;
+                            cornerRadius = 0;
+                        }
                         using var paint = new SKPaint
                         {
                             Color = SKColor.Parse(color),
                             IsStroke = isStroke,
-                            StrokeWidth = 2,
+                            StrokeWidth = strokeWidth,
                             IsAntialias = true
                         };
-                        canvas.DrawRoundRect(0, 0, size.Width, size.Height, 20, 20, paint);
+                        canvas.DrawRoundRect(0, 0, size.Width, size.Height, cornerRadius, cornerRadius, paint);
                     }
                 });
 
